@@ -3,6 +3,7 @@ import prisma from "../config/prisma";
 import ApiResponse from "../utils/ApiResponse";
 import { authenticationMiddleware } from "../middlewares/auth.middleware";
 import itemRouter from "./item.controller";
+import { CreateOrder } from "../types/requests/requests.payload.type";
 
 const orderRouter = Router();
 
@@ -51,6 +52,14 @@ orderRouter.post("/create" , authenticationMiddleware, async (req, res) => {
     /* #swagger.security = [{
         "apiKeyAuth": []
     }] */
+
+    /* #swagger.parameters['createOrder'] = {
+        in: 'body',
+        description: 'Order information',
+        required: true,
+        type: 'object',
+        schema: { $ref: "#/definitions/CreateOrder" }
+    } */
 
     try {
         const { userId , totalPrice , status , items } = req.body;

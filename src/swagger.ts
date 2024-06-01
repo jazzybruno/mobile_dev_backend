@@ -28,6 +28,57 @@ const doc = {
     },
   },
   definitions: {
+    JwtPayload: {
+      userId: "string",
+      email: "string",
+      names: "string",
+      phoneNumber: "string",
+    },
+    CreateUser: {
+      email: "string",
+      fullName: "string",
+      phoneNumber: "string",
+      password: "string",
+    },
+    CreateItem: {
+      name: "string",
+      priceInCents: "number",
+      imagePath: "string",
+      description: "string",
+      isAvailableForPurchase: "boolean",
+      restaurantId: "string",
+      itemType: "string",
+    },
+    CreateOrder: {
+      userId: "string",
+      items: ["string"],
+      totalPrice: "number",
+      status: "string",
+    },
+    CreateNotification: {
+      title: "string",
+      message: "string",
+      userId: "string",
+    },
+    createRestaurant: {
+      name: "string",
+      address: "string",
+      imageUrl: "string",
+      rating: "number",
+      phoneNumber: "string",
+    },
+    Status: {
+      PENDING: "PENDING",
+      COMPLETED: "COMPLETED",
+      CANCELLED: "CANCELLED",
+    },
+    ItemType: {
+      DRINK: "DRINK",
+      DESSERT: "DESSERT",
+      APPERTIZER: "APPERTIZER",
+      MAIN: "MAIN",
+      STARTER: "STARTER",
+    },
   },
 };
 

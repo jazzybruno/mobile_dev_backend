@@ -40,24 +40,12 @@
         "description": "",
         "parameters": [
           {
-            "name": "body",
+            "name": "createUser",
             "in": "body",
+            "description": "User information",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "email": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                },
-                "phoneNumber": {
-                  "example": "any"
-                },
-                "fullNames": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/CreateUser"
             }
           }
         ],
@@ -371,30 +359,12 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "createRestaurant",
             "in": "body",
+            "description": "Restaurant information",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "phoneNumber": {
-                  "example": "any"
-                },
-                "imageUrl": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                },
-                "user": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/createRestaurant"
             }
           }
         ],
@@ -435,30 +405,12 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "createRestaurant",
             "in": "body",
+            "description": "Restaurant information",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "address": {
-                  "example": "any"
-                },
-                "phoneNumber": {
-                  "example": "any"
-                },
-                "imageUrl": {
-                  "example": "any"
-                },
-                "rating": {
-                  "example": "any"
-                },
-                "user": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/createRestaurant"
             }
           }
         ],
@@ -722,27 +674,12 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "createOrder",
             "in": "body",
+            "description": "Order information",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "userId": {
-                  "example": "any"
-                },
-                "totalPrice": {
-                  "example": "any"
-                },
-                "status": {
-                  "example": "any"
-                },
-                "items": {
-                  "example": "any"
-                },
-                "user": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/CreateOrder"
             }
           }
         ],
@@ -954,24 +891,12 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "createNotification",
             "in": "body",
+            "description": "Notification information",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "title": {
-                  "example": "any"
-                },
-                "message": {
-                  "example": "any"
-                },
-                "userId": {
-                  "example": "any"
-                },
-                "user": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/CreateNotification"
             }
           }
         ],
@@ -1124,33 +1049,12 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "updateItem",
             "in": "body",
+            "description": "Item information",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "priceInCents": {
-                  "example": "any"
-                },
-                "imagePath": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "isAvailableForPurchase": {
-                  "example": "any"
-                },
-                "restaurantId": {
-                  "example": "any"
-                },
-                "user": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/CreateItem"
             }
           }
         ],
@@ -1235,33 +1139,12 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "createItem",
             "in": "body",
+            "description": "Item information",
+            "required": true,
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "priceInCents": {
-                  "example": "any"
-                },
-                "imagePath": {
-                  "example": "any"
-                },
-                "description": {
-                  "example": "any"
-                },
-                "isAvailableForPurchase": {
-                  "example": "any"
-                },
-                "restaurantId": {
-                  "example": "any"
-                },
-                "user": {
-                  "example": "any"
-                }
-              }
+              "$ref": "#/definitions/CreateItem"
             }
           }
         ],
@@ -1321,6 +1204,193 @@
             "apiKeyAuth": []
           }
         ]
+      }
+    }
+  },
+  "definitions": {
+    "JwtPayload": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "example": "string"
+        },
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "names": {
+          "type": "string",
+          "example": "string"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "CreateUser": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "fullName": {
+          "type": "string",
+          "example": "string"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "example": "string"
+        },
+        "password": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "CreateItem": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "priceInCents": {
+          "type": "string",
+          "example": "number"
+        },
+        "imagePath": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "isAvailableForPurchase": {
+          "type": "string",
+          "example": "boolean"
+        },
+        "restaurantId": {
+          "type": "string",
+          "example": "string"
+        },
+        "itemType": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "CreateOrder": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "example": "string"
+        },
+        "items": {
+          "type": "array",
+          "example": [
+            "string"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "totalPrice": {
+          "type": "string",
+          "example": "number"
+        },
+        "status": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "CreateNotification": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "string"
+        },
+        "message": {
+          "type": "string",
+          "example": "string"
+        },
+        "userId": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "createRestaurant": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "address": {
+          "type": "string",
+          "example": "string"
+        },
+        "imageUrl": {
+          "type": "string",
+          "example": "string"
+        },
+        "rating": {
+          "type": "string",
+          "example": "number"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "example": "string"
+        }
+      }
+    },
+    "Status": {
+      "type": "object",
+      "properties": {
+        "PENDING": {
+          "type": "string",
+          "example": "PENDING"
+        },
+        "COMPLETED": {
+          "type": "string",
+          "example": "COMPLETED"
+        },
+        "CANCELLED": {
+          "type": "string",
+          "example": "CANCELLED"
+        }
+      }
+    },
+    "ItemType": {
+      "type": "object",
+      "properties": {
+        "DRINK": {
+          "type": "string",
+          "example": "DRINK"
+        },
+        "DESSERT": {
+          "type": "string",
+          "example": "DESSERT"
+        },
+        "APPERTIZER": {
+          "type": "string",
+          "example": "APPERTIZER"
+        },
+        "MAIN": {
+          "type": "string",
+          "example": "MAIN"
+        },
+        "STARTER": {
+          "type": "string",
+          "example": "STARTER"
+        }
       }
     }
   }

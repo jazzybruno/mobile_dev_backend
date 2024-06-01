@@ -3,6 +3,7 @@ import prisma from "../config/prisma";
 import ApiResponse from "../utils/ApiResponse";
 import { authenticationMiddleware } from "../middlewares/auth.middleware";
 import { log } from "console";
+import { createRestaurant } from "../types/requests/requests.payload.type";
 
 const restaurantRouter = Router();
 
@@ -52,9 +53,18 @@ restaurantRouter.post("/create" , authenticationMiddleware, async (req, res) => 
         "apiKeyAuth": []
     }] */
 
+    /* #swagger.parameters['createRestaurant'] = {
+        in: 'body',
+        description: 'Restaurant information',
+        required: true,
+        type: 'object',
+        schema: { $ref: "#/definitions/createRestaurant" }
+    } */
+
+
     try {
-        let { name, address, phoneNumber , imageUrl , rating } = req.body;
-        rating = parseFloat(rating)
+        let { name, address, phoneNumber , imageUrl , rating } = req.body as createRestaurant;
+        rating = rating || 0;
         const restaurant = await prisma.restaurant.create({
             data: {
                 name,
@@ -79,8 +89,16 @@ restaurantRouter.put("/update/:id" , authenticationMiddleware, async (req, res) 
         "apiKeyAuth": []
     }] */
 
+    /* #swagger.parameters['createRestaurant'] = {
+        in: 'body',
+        description: 'Restaurant information',
+        required: true,
+        type: 'object',
+        schema: { $ref: "#/definitions/createRestaurant" }
+    } */
+
     try {
-        const { name, address, phoneNumber , imageUrl , rating } = req.body;
+        const { name, address, phoneNumber , imageUrl , rating } = req.body as createRestaurant;
         const restaurant = await prisma.restaurant.update({
             where: {
                 id: req.params.id,

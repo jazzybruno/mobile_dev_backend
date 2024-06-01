@@ -2,6 +2,7 @@ import { Router } from "express";
 import prisma from "../config/prisma";
 import ApiResponse from "../utils/ApiResponse";
 import { authenticationMiddleware } from "../middlewares/auth.middleware";
+import { CreateNotification } from "../types/requests/requests.payload.type";
 
 const notificationRouter = Router();
 
@@ -50,8 +51,16 @@ notificationRouter.post("/create" , authenticationMiddleware, async (req, res) =
         "apiKeyAuth": []
     }] */
 
+    /* #swagger.parameters['createNotification'] = {
+        in: 'body',
+        description: 'Notification information',
+        required: true,
+        type: 'object',
+        schema: { $ref: "#/definitions/CreateNotification" }
+    } */
+
     try {
-        const { title , message , userId } = req.body;
+        const { title , message , userId } = req.body as CreateNotification;
         const user = await prisma.user.findUnique({
             where: {
                 id: userId,

@@ -2,6 +2,7 @@ import { Router } from "express";
 import prisma from "../config/prisma";
 import ApiResponse from "../utils/ApiResponse";
 import { authenticationMiddleware } from "../middlewares/auth.middleware";
+import { CreateItem } from '../types/requests/requests.payload.type';
 
 const itemRouter = Router();
 
@@ -51,8 +52,16 @@ itemRouter.post("/create" , authenticationMiddleware, async (req, res) => {
         "apiKeyAuth": []
     }] */
 
+    /* #swagger.parameters['createItem'] = {
+        in: 'body',
+        description: 'Item information',
+        required: true,
+        type: 'object',
+        schema: { $ref: "#/definitions/CreateItem" }
+    } */
+
     try {
-        const { name , priceInCents, imagePath , description , isAvailableForPurchase , restaurantId , itemType } = req.body;
+        const { name , priceInCents, imagePath , description , isAvailableForPurchase , restaurantId , itemType } = req.body as CreateItem;
         const restaurant = await prisma.restaurant.findUnique({
             where: {
                 id: restaurantId,
@@ -92,8 +101,16 @@ itemRouter.put("/:id" , authenticationMiddleware, async (req, res) => {
         "apiKeyAuth": []
     }] */
 
+    /* #swagger.parameters['updateItem'] = {
+        in: 'body',
+        description: 'Item information',
+        required: true,
+        type: 'object',
+        schema: { $ref: "#/definitions/CreateItem" }
+    } */
+
     try {
-        const { name , priceInCents, imagePath , description , isAvailableForPurchase , restaurantId } = req.body;
+        const { name , priceInCents, imagePath , description , isAvailableForPurchase , restaurantId } = req.body as CreateItem;
         const restaurant = await prisma.restaurant.findUnique({
             where: {
                 id: restaurantId,
