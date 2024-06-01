@@ -23,6 +23,11 @@ itemRouter.get("/" , authenticationMiddleware , async (req, res) => {
 
 itemRouter.get("/:id" , authenticationMiddleware, async (req, res) => {
     /* #swagger.tags = ['Item'] */
+
+     /* #swagger.security = [{
+        "apiKeyAuth": []
+    }] */
+
     try {
         const item = await prisma.item.findUnique({
             where: {
@@ -47,7 +52,7 @@ itemRouter.post("/create" , authenticationMiddleware, async (req, res) => {
     }] */
 
     try {
-        const { name , priceInCents, imagePath , description , isAvailableForPurchase , restaurantId } = req.body;
+        const { name , priceInCents, imagePath , description , isAvailableForPurchase , restaurantId , itemType } = req.body;
         const restaurant = await prisma.restaurant.findUnique({
             where: {
                 id: restaurantId,
@@ -67,7 +72,8 @@ itemRouter.post("/create" , authenticationMiddleware, async (req, res) => {
                     connect : {
                         id : restaurantId
                     }
-                }
+                },
+                itemType
         },
     });
 

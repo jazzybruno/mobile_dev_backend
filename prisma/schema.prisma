@@ -41,6 +41,7 @@ model Item {
   Order                  Order[]
   restaurant             Restaurant @relation(fields: [restaurantId], references: [id])
   restaurantId           String
+  itemType               ItemType
 }
 
 model Order {
@@ -87,4 +88,12 @@ enum Status {
   CONFIRMED
   DELIVERED
   CANCELLED
+}
+
+enum ItemType {
+  APPERTIZER
+  STARTER
+  MAIN
+  DRINK
+  DESSERT
 }
